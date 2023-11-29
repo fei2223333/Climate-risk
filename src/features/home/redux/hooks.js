@@ -10,3 +10,5 @@ export { useGetLowestMigrationCensusTracts } from './getLowestMigrationCensusTra
 export { useGetHighestMigrationCensusTracts } from './getHighestMigrationCensusTracts';
 export { useGetAverageClimateRiskByState } from './getAverageClimateRiskByState';
 export { useGetAverageClimateRiskByIncome } from './getAverageClimateRiskByIncome';
+export { useGetCensusTractFilterSearchResult } from './getCensusTractFilterSearchResult';
+export { useGetCommunityResilienceSuggest } from './getCommunityResilienceSuggest';

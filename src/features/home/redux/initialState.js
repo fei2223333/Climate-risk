@@ -1,6 +1,8 @@
 const initialState = {
   communityResilenceSearchResults:null,
   censusTractFilterResult: null,
+  censusTractFilterSuggest: null,
+  communityResilenceSearchSuggest: null,
   highestRiskCensusTractsResult: null,
   lowestRiskCensusTractsResult: null,
   highestMigrationCensusTractsResult: null,
@@ -38,6 +40,10 @@ const initialState = {
   getAverageClimateRiskByStateError: null,
   getAverageClimateRiskByIncomePending: false,
   getAverageClimateRiskByIncomeError: null,
+  getCensusTractFilterSearchResultPending: false,
+  getCensusTractFilterSearchResultError: null,
+  getCommunityResilienceSuggestPending: false,
+  getCommunityResilienceSuggestError: null,
 };
 
 export default initialState;

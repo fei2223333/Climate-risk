@@ -11,6 +11,8 @@ import { reducer as getLowestMigrationCensusTractsReducer } from './getLowestMig
 import { reducer as getHighestMigrationCensusTractsReducer } from './getHighestMigrationCensusTracts';
 import { reducer as getAverageClimateRiskByStateReducer } from './getAverageClimateRiskByState';
 import { reducer as getAverageClimateRiskByIncomeReducer } from './getAverageClimateRiskByIncome';
+import { reducer as getCensusTractFilterSearchResultReducer } from './getCensusTractFilterSearchResult';
+import { reducer as getCommunityResilienceSuggestReducer } from './getCommunityResilienceSuggest';
 
 const reducers = [
   uploadFileReducer,
@@ -25,6 +27,8 @@ const reducers = [
   getHighestMigrationCensusTractsReducer,
   getAverageClimateRiskByStateReducer,
   getAverageClimateRiskByIncomeReducer,
+  getCensusTractFilterSearchResultReducer,
+  getCommunityResilienceSuggestReducer,
 ];
 
 export default function reducer(state = initialState, action) {

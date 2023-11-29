@@ -26,7 +26,7 @@ export function getCommunityResilenceSearchResults(payload) {
     };
 
     Axios.defaults.baseURL = 'http://127.0.0.1:8080';
-    const url = `/CommunityResilience`;
+    const url = `/communityResilienceSuggest`;
     return Axios(url, {
       method: 'post',
       responseType: 'json',

@@ -22,3 +22,11 @@ export {
   getAverageClimateRiskByIncome,
   dismissGetAverageClimateRiskByIncomeError,
 } from './getAverageClimateRiskByIncome';
+export {
+  getCensusTractFilterSearchResult,
+  dismissGetCensusTractFilterSearchResultError,
+} from './getCensusTractFilterSearchResult';
+export {
+  getCommunityResilienceSuggest,
+  dismissGetCommunityResilienceSuggestError,
+} from './getCommunityResilienceSuggest';
