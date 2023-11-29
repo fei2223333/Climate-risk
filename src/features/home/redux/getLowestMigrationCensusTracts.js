@@ -14,20 +14,20 @@ export function getLowestMigrationCensusTracts(args = {}) {
       type: HOME_GET_LOWEST_MIGRATION_CENSUS_TRACTS_BEGIN,
     });
 
-    const mockData = [
-      {
-        "State": "string",
-        "County": "string",
-        "Migration_Level": 0,
-        "Name": "string"
-      },
-      {
-        "State": "string",
-        "County": "string",
-        "Migration_Level": 0,
-        "Name": "string"
-      }
-    ]
+    // const mockData = [
+    //   {
+    //     "State": "string",
+    //     "County": "string",
+    //     "Migration_Level": 0,
+    //     "Name": "string"
+    //   },
+    //   {
+    //     "State": "string",
+    //     "County": "string",
+    //     "Migration_Level": 0,
+    //     "Name": "string"
+    //   }
+    // ]
 
     Axios.defaults.baseURL = 'http://127.0.0.1:8080';
     const url = `/lowestMigrationCensusTracts`;
@@ -47,10 +47,10 @@ export function getLowestMigrationCensusTracts(args = {}) {
         //   type: HOME_GET_LOWEST_MIGRATION_CENSUS_TRACTS_FAILURE,
         //   data: mockData,
         // });
-        dispatch({
-          type: HOME_GET_LOWEST_MIGRATION_CENSUS_TRACTS_SUCCESS,
-          data: mockData,
-        });
+        // dispatch({
+        //   type: HOME_GET_LOWEST_MIGRATION_CENSUS_TRACTS_SUCCESS,
+        //   data: mockData,
+        // });
         // message.error("failed to download")
       });
   };

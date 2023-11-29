@@ -14,52 +14,52 @@ export function getHighestRiskCensusTracts(args = {}) {
       type: HOME_GET_HIGHEST_RISK_CENSUS_TRACTS_BEGIN,
     });
 
-    const mockData = [
-      {
-        "State": "string",
-        "County": "string",
-        "Risk_Score": 0,
-        "Avalanche_Score": 0,
-        "Coastal_Flooding_Score": 0,
-        "Cold_Wave_Score": 0,
-        "Drought_Score": 0,
-        "Earthquake_Score": 0,
-        "Hail_Score": 0,
-        "Heat_Wave_Score": 0,
-        "Ice_Storm_Score": 0,
-        "Landslide_Score": 0,
-        "Lightning_Score": 0,
-        "Riverine_Flooding_Score": 0,
-        "Strong_Wind_Score": 0,
-        "Tornado_Score": 0,
-        "Tsunami_Score": 0,
-        "Volcanic_Activity_Score": 0,
-        "Wildfire_Score": 0,
-        "Winter_Weather_Score": 0
-      },
-      {
-        "State": "string",
-        "County": "string",
-        "Risk_Score": 0,
-        "Avalanche_Score": 0,
-        "Coastal_Flooding_Score": 0,
-        "Cold_Wave_Score": 0,
-        "Drought_Score": 0,
-        "Earthquake_Score": 0,
-        "Hail_Score": 0,
-        "Heat_Wave_Score": 0,
-        "Ice_Storm_Score": 0,
-        "Landslide_Score": 0,
-        "Lightning_Score": 0,
-        "Riverine_Flooding_Score": 0,
-        "Strong_Wind_Score": 0,
-        "Tornado_Score": 0,
-        "Tsunami_Score": 0,
-        "Volcanic_Activity_Score": 0,
-        "Wildfire_Score": 0,
-        "Winter_Weather_Score": 0
-      }
-    ]
+    // const mockData = [
+    //   {
+    //     "State": "string",
+    //     "County": "string",
+    //     "Risk_Score": 0,
+    //     "Avalanche_Score": 0,
+    //     "Coastal_Flooding_Score": 0,
+    //     "Cold_Wave_Score": 0,
+    //     "Drought_Score": 0,
+    //     "Earthquake_Score": 0,
+    //     "Hail_Score": 0,
+    //     "Heat_Wave_Score": 0,
+    //     "Ice_Storm_Score": 0,
+    //     "Landslide_Score": 0,
+    //     "Lightning_Score": 0,
+    //     "Riverine_Flooding_Score": 0,
+    //     "Strong_Wind_Score": 0,
+    //     "Tornado_Score": 0,
+    //     "Tsunami_Score": 0,
+    //     "Volcanic_Activity_Score": 0,
+    //     "Wildfire_Score": 0,
+    //     "Winter_Weather_Score": 0
+    //   },
+    //   {
+    //     "State": "string",
+    //     "County": "string",
+    //     "Risk_Score": 0,
+    //     "Avalanche_Score": 0,
+    //     "Coastal_Flooding_Score": 0,
+    //     "Cold_Wave_Score": 0,
+    //     "Drought_Score": 0,
+    //     "Earthquake_Score": 0,
+    //     "Hail_Score": 0,
+    //     "Heat_Wave_Score": 0,
+    //     "Ice_Storm_Score": 0,
+    //     "Landslide_Score": 0,
+    //     "Lightning_Score": 0,
+    //     "Riverine_Flooding_Score": 0,
+    //     "Strong_Wind_Score": 0,
+    //     "Tornado_Score": 0,
+    //     "Tsunami_Score": 0,
+    //     "Volcanic_Activity_Score": 0,
+    //     "Wildfire_Score": 0,
+    //     "Winter_Weather_Score": 0
+    //   }
+    // ]
 
     Axios.defaults.baseURL = 'http://127.0.0.1:8080';
     const url = `/highestRiskCensusTracts`;
@@ -79,10 +79,10 @@ export function getHighestRiskCensusTracts(args = {}) {
         //   type: HOME_GET_HIGHEST_RISK_CENSUS_TRACTS_FAILURE,
         //   data: mockData,
         // });
-        dispatch({
-          type: HOME_GET_HIGHEST_RISK_CENSUS_TRACTS_SUCCESS,
-          data: mockData,
-        });
+        // dispatch({
+        //   type: HOME_GET_HIGHEST_RISK_CENSUS_TRACTS_SUCCESS,
+        //   data: mockData,
+        // });
         // message.error("failed to download")
       });
   };
