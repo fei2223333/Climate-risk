@@ -18,6 +18,11 @@ export class ConanLayout extends Component {
     });
   }
 
+  componentDidMount() {
+    this.props.actions.getAverageClimateRiskByIncome();
+    this.props.actions.getAverageClimateRiskByState();
+  }
+
   componentWillUnmount() {
     this.props.actions.resetUpload();
   }
