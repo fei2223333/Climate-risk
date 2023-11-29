@@ -26,7 +26,7 @@ export function getCommunityResilenceSearchResults(payload) {
     };
 
     Axios.defaults.baseURL = 'http://127.0.0.1:8080';
-    const url = `/communityResilienceSuggest`;
+    const url = `/communityResilience`;
     return Axios(url, {
       method: 'post',
       responseType: 'json',
@@ -40,10 +40,10 @@ export function getCommunityResilenceSearchResults(payload) {
         });
       })
       .catch(err => {
-        dispatch({
-          type: HOME_GET_COMMUNITY_RESILENCE_SEARCH_RESULTS_SUCCESS,
-          data: mockData,
-        });
+        // dispatch({
+        //   type: HOME_GET_COMMUNITY_RESILENCE_SEARCH_RESULTS_SUCCESS,
+        //   data: mockData,
+        // });
         // message.error("failed to download")
       });
   };

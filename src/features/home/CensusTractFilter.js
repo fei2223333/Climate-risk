@@ -12,11 +12,15 @@ export class CensusTractFilter extends Component {
     actions: PropTypes.object.isRequired,
   };
 
+  componentDidMount() {
+    this.props.actions.getCensusTractFilterSearchResult();
+  }
+
   render() {
     return (
       <div className="home-census-tract-filter">
-        <UploadComponent type="CensusTractFilter"/>
-        <TemplateChart  data={this.props.home.censusTractFilterResult} />
+         {this.props.home.censusTractFilterSuggest?<UploadComponent type="CensusTractFilter" searchFields={this.props.home.censusTractFilterSuggest}/>:null}
+         {this.props.home.censusTractFilterResult? this.props.home.censusTractFilterResult.map((d)=><TemplateChart  data={d} />):null}
       </div>
     );
   }

@@ -19,8 +19,7 @@ export class ConanLayout extends Component {
   }
 
   componentDidMount() {
-    this.props.actions.getAverageClimateRiskByIncome();
-    this.props.actions.getAverageClimateRiskByState();
+    this.props.actions.getCommunityResilienceSuggest();
   }
 
   componentWillUnmount() {
@@ -30,7 +29,7 @@ export class ConanLayout extends Component {
   render() {
     return (
       <div className="home-conan-layout">
-        <UploadComponent type="conan"/>
+        {this.props.home.communityResilenceSearchSuggest?<UploadComponent type="conan" searchFields={this.props.home.communityResilenceSearchSuggest}/>:null}
         <ConanContent data={this.props.home.communityResilenceSearchResults} />
       </div>
     );

@@ -31,7 +31,7 @@ export class ConanContent extends Component {
     return this.props.data ? (
       <Space direction="vertical" size="middle" style={{ display: 'flex', marginTop: 30 }}>
         <Card title="Search Results">
-          <Table columns={columns} dataSource={[{...this.props.data, key:1}]} />
+          <Table columns={columns} dataSource={this.props.data} />
         </Card>
       </Space>
     ) : null;

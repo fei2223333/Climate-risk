@@ -29,7 +29,7 @@ export class TemplateChart extends Component {
 
   render() {
     const pieData = this.props.data? {
-      Sex_Ratio:this.props.data.Sex_Ratio,
+      Sex_Ratio:this.props.data.sexRatio,
       Age: this.props.data.Age,
       Education: this.props.data.Education,
       Income: this.props.data.Income,
@@ -38,10 +38,8 @@ export class TemplateChart extends Component {
     const aggregateData = this.props.data ? Object.entries({
       state: this.props.data.state,
       county: this.props.data.county,
-      Population: this.props.data.Population,
-      "Climate Risk Score": this.props.data.Climate_Risk_Score,
-      "Community Resilience Score": this.props.data.Community_Resilience_Score,
-      "Median Individual Income": this.props.data.Median_Individual_Income
+      Population: this.props.data.totalPopulation,
+      "Community Resilience Score": this.props.data.communityResilienceScore,
   }).map(([key, value]) => `${key}: ${value}`) : null;
   
 

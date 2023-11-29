@@ -15,7 +15,7 @@ export function getCommunityResilienceSuggest(args = {}) {
     });
 
     Axios.defaults.baseURL = 'http://127.0.0.1:8080';
-    const url = `/censusTractFilterSuggest`;
+    const url = `/communityResilienceSuggest`;
     return Axios(url, {
       method: 'get',
       responseType: 'json',

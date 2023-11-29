@@ -33,39 +33,56 @@ export class UploadComponent extends Component {
       fipsName: null,
       climateChangeImpactCategories: null,
       individualIncome: null,
+      selectedState: undefined,
+      selectedCounty: undefined,
+      selectedFipsCode: undefined,
+      counties: [],
+      fipsCodes: [],
     };
     this.handleUploadCommunityResilence = this.handleUploadCommunityResilence.bind(this);
     this.handleUploadCensusTractFilter = this.handleUploadCensusTractFilter.bind(this);
   }
 
-  handleFileChange = ({ file, fileList }) => {
-    //处理文件change，保证用户选择的文件只有一个
-    const { status } = file;
-    if (file.size / 1024 / 1024 > 50) {
-      message.error(`${file.name} has exceeded 50 MB.`);
+  handleStateChange = (value) => {
+    const field = this.props.searchFields.find(field => field.state === value);
+    const counties = field ? field.county : [];
+    this.setState({ selectedState: value, counties, selectedCounty: undefined, selectedFipsCode: undefined, fipsCodes: [] });
+  }
+  
+
+  handleCountyChange = (value) => {
+    const countyObj = this.state.counties.find(county => Object.keys(county)[0] === value);
+    const fipsCodes = countyObj ? countyObj[value] : [];
+    this.setState({ selectedCounty: value, fipsCodes, selectedFipsCode: undefined });
+  }
+  
+
+  handleFipsCodeChange = (value) => {
+    this.setState({ selectedFipsCode: value });
+  }
+  handleUploadCommunityResilence() {
+    if(!this.state.selectedState || !this.state.selectedCounty || !this.state.selectedFipsCode){
+      message.error("Please fill the form")
       return;
     }
-    this.setState({
-      fileList,
-    });
-  };
-
-  handleUploadCommunityResilence() {
     const formData = {
-      state: this.state.state,
-      county: this.state.county,
-      fipsName: this.state.fipsName,
+      selectedState: this.state.selectedState,
+      selectedCounty: this.state.selectedCounty,
+      selectedFIPSCode11: this.state.selectedFipsCode,
     };
 
     this.props.actions.getCommunityResilenceSearchResults(formData);
   }
 
   handleUploadCensusTractFilter() {
+    if(!this.state.selectedState || !this.state.selectedCounty || !this.state.selectedFipsCode){
+      message.error("Please fill the form")
+      return;
+    }
     const formData = {
-      state: this.state.state,
-      county: this.state.county,
-      individualIncome: this.state.individualIncome,
-      climateChangeImpactCategories: this.state.climateChangeImpactCategories
+      selectedState: this.state.selectedState,
+      selectedCounties: this.state.selectedCounty,
+      selectedHazardTypes: this.state.selectedFipsCode,
     };
     this.props.actions.postCensusTractFilter(formData);
   }
@@ -149,15 +166,27 @@ export class UploadComponent extends Component {
         <Form>
           <Divider />
           <Form.Item {...formItemLayout} label="State" help={this.state.iterationStepsErrorMsg}>
-            <Select defaultValue="" style={{ width: '50%' }} options={this.props.home.searchFields.states} />
-          </Form.Item>
-          <Form.Item
-            {...formItemLayout}
-            label="County"
-            validateStatus={this.state.patternNumberValidStatus}
-            help={this.state.patternNumberErrorMsg}
+            <Select defaultValue="" style={{ width: '50%' }} placeholder="Select a state"
+              optionFilterProp="children"
+              onChange={this.handleStateChange}
+              value={this.state.selectedState}
+            >
+              {this.props.searchFields.map(field => (
+                <Select.Option key={field.state} value={field.state}>{field.state}</Select.Option>
+              ))}
+            </Select>
+            </Form.Item>
+            <Form.Item {...formItemLayout} label="County" help={this.state.iterationStepsErrorMsg}>
+            <Select style={{ width: '50%' }} placeholder="Select a county"
+            optionFilterProp="children"
+            onChange={this.handleCountyChange}
+            value={this.state.selectedCounty}
+            disabled={!this.state.selectedState}
           >
-            <Select style={{ width: '50%' }} defaultValue="" options={this.props.home.searchFields.county} />
+          {this.state.counties.map(county => (
+            <Select.Option key={Object.keys(county)[0]} value={Object.keys(county)[0]}>{Object.keys(county)[0]}</Select.Option>
+          ))}
+        </Select>
           </Form.Item>
           {this.props.type === 'conan' ? (
             <div>
@@ -167,7 +196,16 @@ export class UploadComponent extends Component {
                 validateStatus={this.state.patternLengthValidStatus}
                 help={this.state.patternLengthErrorMsg}
               >
-                <Select style={{ width: '50%' }} defaultValue="" options={this.props.home.searchFields.fipsName} />
+                <Select style={{ width: '50%' }} placeholder="Select a FIPS Code"
+                  optionFilterProp="children"
+                  onChange={this.handleFipsCodeChange}
+                  value={this.state.selectedFipsCode}
+                  disabled={!this.state.selectedCounty}
+                >
+                  {this.state.fipsCodes.map(fipsCode => (
+                    <Select.Option key={fipsCode} value={fipsCode}>{fipsCode}</Select.Option>
+                  ))}
+                </Select>
               </Form.Item>
               <Button
                 type="primary"
@@ -188,11 +226,17 @@ export class UploadComponent extends Component {
               >
                 <Select
                   style={{ width: '50%' }}
-                  defaultValue=""
-                  options={this.props.home.searchFields.climateChangeImpactCategories}
-                />
+                  optionFilterProp="children"
+                  onChange={this.handleFipsCodeChange}
+                  value={this.state.selectedFipsCode}
+                  disabled={!this.state.selectedCounty}
+                >
+                  {this.state.fipsCodes.map(fipsCode => (
+                    <Select.Option key={fipsCode} value={fipsCode}>{fipsCode}</Select.Option>
+                  ))}
+                </Select>
               </Form.Item>
-              <Form.Item {...formItemLayout} help={this.state.patternNumberErrorMsg}>
+              {/* <Form.Item {...formItemLayout} help={this.state.patternNumberErrorMsg}>
                 <Slider
                   min={0}
                   max={50}
@@ -201,7 +245,7 @@ export class UploadComponent extends Component {
                   }}
                   value={this.state.individualIncome}
                 />
-              </Form.Item>
+              </Form.Item> */}
               <Button
                 type="primary"
                 onClick={this.handleUploadCensusTractFilter}

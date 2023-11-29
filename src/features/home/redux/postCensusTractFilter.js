@@ -74,7 +74,7 @@ export function postCensusTractFilter(payload) {
     };
 
     Axios.defaults.baseURL = 'http://127.0.0.1:8080';
-    const url = `/CensusTractFilter`;
+    const url = `/censusTractFilter`;
     return Axios(url, {
       method: 'post',
       responseType: 'json',
